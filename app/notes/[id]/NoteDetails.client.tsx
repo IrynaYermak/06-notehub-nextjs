@@ -14,17 +14,21 @@ export default function NoteDetailsClient() {
   } = useQuery({
     queryKey: ['note', id],
     queryFn: () => fetchNoteById(id),
-    enabled: !id,
+    enabled: Boolean(id),
     refetchOnMount: false,
   });
 
+  if (isLoading) {
+    return <p>Loading, please wait...</p>;
+  }
+  if (isError) {
+    return <p>Something went wrong.</p>;
+  }
   if (!note) {
     return <p>Something went wrong.</p>;
   }
   return (
     <>
-      {isLoading && <p>Loading, please wait...</p>}
-      {isError && <p>Something went wrong.</p>}
       <NoteDetails note={note} />
     </>
   );
