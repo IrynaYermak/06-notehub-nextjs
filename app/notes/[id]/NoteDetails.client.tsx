@@ -17,7 +17,6 @@ export default function NoteDetailsClient() {
     enabled: !id,
     refetchOnMount: false,
   });
-  console.log('note', note);
 
   if (!note) {
     return <p>Something went wrong.</p>;

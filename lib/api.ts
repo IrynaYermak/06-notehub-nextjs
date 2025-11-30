@@ -12,7 +12,7 @@ export interface fetchNotesResponse {
 }
 
 interface createNoteProps {
-  id: string;
+  id?: string;
   title: string;
   content: string;
   tag: string;
